@@ -18,7 +18,11 @@
 #   # Custom log path, normal GC behavior.
 #   RailsFCGIHandler.process! '/var/log/myapp_fcgi_crash.log'
 #
+
+
+
 require File.dirname(__FILE__) + "/../config/environment"
 require 'fcgi_handler'
 
-RailsFCGIHandler.process!
+#RailsFCGIHandler.process!
+RailsFCGIHandler.process!  File.dirname(__FILE__) + "/../log/custom_fcgi_log.log"
