@@ -2,8 +2,8 @@
 
 # Uncomment below to force Rails into production mode when 
 # you don't control web/app server and can't set it the proper way
+ENV['GEM_PATH'] = '/home/jujudell/ruby/gems:/usr/lib/ruby/gems/1.8'
 ENV['RAILS_ENV'] ||= 'production'
-ENV['GEM_PATH'] = '/home/jujudell/gems:/usr/lib/ruby/gems/1.8'
 
 
 # Specifies gem version of Rails to use when vendor/rails is not present
@@ -121,4 +121,4 @@ MY_CONFIG = {
   :flickr_id => "46484477@N00",
   :rflickr_lib => true
 }
-require 'flickr'
+#require 'flickr'
