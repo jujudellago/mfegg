@@ -29,21 +29,19 @@
 					
 			
 
-		
+			<%- if false -%>
 		<div class="disignBoxFirst">
 			<div class="boxFirstHeader"> Dernières Photos <span class="blue">flick</span><span class="pink">r</span>  </div>
 			<div class="boxContent">
 				<div  class="thumb_block">
-						<% if false
-						#for photo in @flickr_photos 
-						%>
-						 <div  class="thumb_image"> <%#= flickr_photo_tag(photo) %></div>
+						<% for photo in @flickr_photos %>
+						 <div  class="thumb_image"> <%= flickr_photo_tag(photo) %></div>
 						<% end %>
 				</div>
 				<!-- <%= image_tag('flickr_logo_dark.gif', :align=>'center')%> -->
 			</div>
 		</div>
-		
+		<%- end -%>
 		<div class="disignBoxFirst">
 			<div class="boxFirstHeader">Sponsors</div>
 			<div class="boxContent">

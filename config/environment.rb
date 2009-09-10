@@ -2,10 +2,8 @@
 
 # Uncomment below to force Rails into production mode when 
 # you don't control web/app server and can't set it the proper way
-# ENV['RAILS_ENV'] ||= 'production'
 ENV['RAILS_ENV'] ||= 'production'
 ENV['GEM_PATH'] = '/home/jujudell/gems:/usr/lib/ruby/gems/1.8'
-
 
 
 # Specifies gem version of Rails to use when vendor/rails is not present
@@ -59,14 +57,6 @@ PASSWORD_SALT = '48e45be7dj47szb0ab582d26e2168621' unless Object.const_defined?(
 
 
 # monkey patch redcloth
-#class RedCloth
-#  def hard_break( text )
-#    # found in 3.0.4
-##    text.gsub!( /(.)\n(?!\Z| *([#*=]+(\s|$)|[{|]))/, "\\1<br />" ) if hard_breaks
-#    # backported from 3.0.3
-#    text.gsub!( /(.)\n(?! *[#*\s|]|$)/, "\\1<br />" ) if hard_breaks
-#  end
-#end
 
 Module.class_eval do
   def expiring_attr_reader(method_name, value)
@@ -113,6 +103,7 @@ CMS_ICONS ={
   'no-comment'=>'/images/icons/no-comment.gif'
 }          
 
+
 unless '1.9'.respond_to?(:force_encoding)
   String.class_eval do
     begin
@@ -122,7 +113,6 @@ unless '1.9'.respond_to?(:force_encoding)
     end
   end
 end
-
 
 MY_CONFIG = {
   :flickr_cache_file => "#{RAILS_ROOT}/config/flickr.cache",
