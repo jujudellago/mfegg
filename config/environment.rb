@@ -6,6 +6,7 @@ ENV['GEM_PATH'] = '/home/jujudell/ruby/gems:/usr/lib/ruby/gems/1.8'
 ENV['RAILS_ENV'] ||= 'production'
 
 
+
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '1.2.6' unless defined? RAILS_GEM_VERSION
 
@@ -122,3 +123,4 @@ MY_CONFIG = {
   :rflickr_lib => true
 }
 #require 'flickr'
+
