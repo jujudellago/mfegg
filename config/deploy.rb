@@ -50,7 +50,7 @@ role :db,  domain, :primary => true
 
 
 task :update_config, :roles=>[:app] do
-  run "cp -Rf #{shared_path}/config/* #{release_path}/config/"
+  run "cp -Rf #{shared_path}/config/* #{release_path}/config/ &&  cp  #{shared_path}/public/.htaccess #{release_path}/public/ "
 end
 
 after 'deploy:update_code', :update_config
