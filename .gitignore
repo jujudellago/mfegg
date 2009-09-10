@@ -1,0 +1,17 @@
+log/*.log
+tmp/**/*
+tmp/*
+sql/*
+.DS_Store
+public/cache/**/*
+public/photos
+public/*xml
+public/*xml.gz
+public/uploaded_images/*
+public/attachments/*
+public/images/0000/*
+vendor/rails/*
+config/database.yml
+doc/plugins
+public/.htaccess
+*Thumbs.db
