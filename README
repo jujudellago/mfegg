@@ -1,50 +1,44 @@
-== Beast -  Two's company. Three's a forum. More's a Beast.
+--- Male Female = Egg
 
-A small, light-weight forum in Rails with a scary name and a goal of around 500 lines of code when we're done. [1]
+I took the name of the main website for the project name, it's one of my first RoR projects, still maintained in rails 1.2.3 
+for a friend's website http://male-female-egg.com/
 
-[1] The 500 LOC limit has officially been put to rest (http://beast.caboo.se/forums/1/topics/681), however the goal is unchanged: clean, readable code, and a great minimal forum app.  Less is more.
+the goal was to have a multilanguage CMS, and a forum.
+
+no blog, the guy don0t really know what is a blog
 
 
-== How to Obtain Beast
 
-Grab the latest:
+Ruby and JavaScript, as the whole Beast project  source are MIT/BSD licensed, so is mine....
 
-svn checkout http://svn.techno-weenie.net/projects/beast/trunk beast
 
-Customize your database.yml:
+play around as you want, but don't expect much, catch me on twitter @yabo_concept if there's something you wanna use in this project
 
-cp config/database.example.yml config/database.yml
 
-Load the schema:
 
-rake db:schema:load
-
-(You cannot use rake db:migrate to migrate the schema up from 0)
-
-Change the PASSWORD_SALT in config/environment.rb.
-
-Launch it:
-
-script/server
 
 
 == Optional Gems
 
 get RedCloth for using Textile in Ruby
-
 gem install RedCloth
-
 get OpenID for OpenID logins:
-
 gem install ruby-openid
-
 get GetText for Translation support
 
 
 == References
 
-Backpack project page
 
+this project was based on Beast form
+
+Grab the latest:
+
+svn checkout http://svn.techno-weenie.net/projects/beast/trunk beast
+
+
+
+Backpack project page
 http://technoweenie.backpackit.com/pub/706157
 
 Installing on Windows Guide
