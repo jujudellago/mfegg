@@ -1,0 +1,15 @@
+<div id="pages">
+<h2><%= "Update the pages positions"[:update_pages_positions] %></h2>
+	<div id ="position_infos">
+		<p><%="Welcome page remains on first positon"[:welcome_page_remains_on_top]%></p>
+		<p><%="Drag & drop the other pages to updated their position"[:drag_drop_pages_to_update]%></p>
+
+	</div>
+<ul id="pages_container">
+  <% @pages.each do |page| %>
+	<%= render :partial => 'order_page', :locals=>{:page=>page} %>
+  <% end %>
+</ul>
+</div>
+<%= sortable_element('pages_container', :update => 'pages', :url => {:action => :update_positions, :parent_id=> @parent_id}, :complete => visual_effect(:highlight, "pages_container")) %>
+

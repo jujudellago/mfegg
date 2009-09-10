@@ -1,0 +1,4 @@
+page[@page.dom_id].visual_effect :highlight
+page[@page.dom_id].visual_effect :puff
+flash.discard
+

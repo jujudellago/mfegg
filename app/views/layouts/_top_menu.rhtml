@@ -1,0 +1,113 @@
+<!-- <div id="top_menu">
+<ul>
+      <li><a class="selected" href="/">home</a></li>
+       <li><%= link_to 'Forums'[:forums_title], forums_path, :rel => 'home' %></li>
+	  <li><a href="index.html"  rel="dropmenu1" >Photos</a></li>
+      <li><a href="index.html"  rel="dropmenu2" >Blog</a></li>
+      <li><%= link_to('A propos', page_url('3-propos'))%></li>
+    </ul>
+</div>
+
+
+	-->
+	
+<%  
+@pages = Page.find_all_by_parent_id('0',:order=>'position',:conditions=>'pages.id>1') 
+@homepage=Page.find(:first)
+
+%>
+<div id="top_menu" >
+	<ul>
+	<li><a href="/"><%= @homepage.title %></a></li>
+	<li><%= link_to 'Forums'[:forums_title], forums_path, :rel => 'Forums' %></li>
+	<li><%= link_to 'Photos'[:photos], galleries_path %></li>
+<%
+ @submenus=Array.new
+ @pages.each do |page| 
+	submenu=""
+	if page.children.size>0
+		submenu="\n <div id=\"#{page.permalink}\" class=\"dropmenudiv_a\">"
+		page.children.each do |child|
+			submenu=submenu+link_to(child.title,page_path(child))
+		end
+		submenu=submenu+"</div>"
+		@submenus<<submenu
+		%>
+			<li>
+				<%= link_to(page.title,"#", :rel=>page.permalink) %>
+			</li>
+		<%
+	else
+		%>
+			<li>
+				<%= link_to(page.title,page_path(page)) %>
+			</li>
+		<%
+	end	
+end
+%>
+	
+	<!-- <li><a href="" title="pogona vitticeps" rel="pogona">pogona vitticeps</a></li>
+	<li><a href="" title="pogona vitticeps" rel="pogona">pogona vitticeps</a></li>
+	<li><a href="" title="Animaux disponibles" rel="animaux">Animaux disponibles</a></li>
+	<li><a href="" title="Incubateur" rel="incubateur">Incubateur</a></li>
+	<li><a href="" title="Insectes et leur élevage" rel="insectes">Insectes</a></li>
+	<li><a href="" title="Photos" rel="photos">Photos</a></li>
+	<li><%= link_to('A propos', page_url('3-propos'))%></li>	 -->
+	</ul>
+</div>
+
+
+<!--1st drop down menu -->                                                   
+
+<% @submenus.each do |sub| %>
+<%= sub %>
+<% end %>
+
+<div id="Forums" class="dropmenudiv_a">
+	<%= link_to 'Index'[:forums_index], forums_path %>
+	<%= link_to 'Recent posts'[:recent_posts], all_posts_path %>
+		 <% if logged_in? %>
+		   <%=  link_to 'Profile'[:profile_title], user_path(current_user) %>
+		 	<%= link_to 'Settings'[:settings_title], settings_path %>
+			<%= link_to 'Users'[:users], users_path %>
+		  	<%= link_to 'Logout'[:logout_title], logout_path %>
+		    <% else %>
+		    <%= link_to 'Signup'[:signup_action], signup_path %>
+		    <%= link_to 'Login'[:login_action], login_path %>
+		 <% end %>
+</div>
+
+<!--1st drop down menu -->                                                   
+<!-- <div id="pogona" class="dropmenudiv_a">
+	<a href="">Origine          </a>
+	<a href="">Comportement     </a>
+	<a href="">Terrarium        </a>
+	<a href="">Alimentation     </a>
+	<a href="">Reproduction     </a>
+</div>
+
+<div id="animaux" class="dropmenudiv_a">
+	<a href="">Origine          </a>
+	<a href="">Comportement     </a>
+</div>
+<div id="incubateur" class="dropmenudiv_a">
+	<a href="">Origine          </a>
+	<a href="">Comportement     </a>
+</div>
+<div id="insectes" class="dropmenudiv_a">
+	<a href="">Origine          </a>
+	<a href="">Comportement     </a>
+</div>
+<div id="photos" class="dropmenudiv_a">
+	<a href="">Origine          </a>
+	<a href="">Comportement     </a>
+</div> -->
+	<script type="text/javascript">
+	//SYNTAX: tabdropdown.init("menu_id", [integer OR "auto"])
+	tabdropdown.init("top_menu", 8)
+	</script>
+
+
+
+	

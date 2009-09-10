@@ -1,0 +1,11 @@
+#page.alert("parent is #{ @parent_id}")
+if @parent_id==0
+  page.insert_html :bottom, :pages_list, :partial=>'page', :object=>@page
+  page[@page.dom_id].visual_effect :highlight 
+else
+   page.insert_html :bottom,"sub_pages-#{@parent_id}",  :partial=>'sub_page', :locals=>{:child=>@page}
+   page["sub_pages-#{@parent_id}"].visual_effect :highlight 
+end
+page['pages_form'].reset
+page[:form_container].toggle
+flash.discard

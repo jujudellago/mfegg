@@ -1,0 +1,26 @@
+  <li id="<%= page.dom_id %>">
+    <strong> <%= page.title %> </strong>
+<span class="edit_icons">
+      <%= link_to (image_tag('/images/icons/kate.png', :alt=>'edit'[:edit]), 
+						page_path(page)	 )%>
+		<%=	link_to( image_tag('/images/icons/konsole.png', :alt=>'Edit HTML code'[:edit_html_code]),	edit_page_path(page))%>
+<% unless page.id==1  %>     
+<%= link_to_remote  (image_tag('/images/icons/cancel.png', :alt=>"Destroy"[:destroy]), :url => page_path(page), 
+:confirm => "Are you sure you wish to delete this page?"[:confirm_delete_page], :method => :delete) %> 
+<%= link_to_function( image_tag('/images/icons/window_list.png', :alt=>'Add child page'[:add_sub_page])) do |pg| 
+	pg[:form_container].toggle
+	pg[:parent_hidden].value=page.id
+	pg.replace_html :info_page_form, "Add child to '"[:add_sub_page_to]+page.title+"'"
+end %>
+<%= link_to ( image_tag('/images/icons/2downarrow.png', :alt=>"Order pages "[:order_pages]) ,:action=>'positions', :parent_id=>page.id ) if page.children.size>0 %>
+<% end %>
+</span>
+<ol id="sub_<%= page.dom_id %>">
+<% if page.children.size>0 %>
+	<% page.children.each do |child| %>
+	<%= render :partial=>'sub_page', :locals=>{:child=>child} %>
+	<% end -%>
+<% end %>
+</ol>
+</li>
+

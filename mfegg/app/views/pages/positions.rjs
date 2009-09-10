@@ -1,0 +1,3 @@
+page.select("#pages_container li").each do |element|
+  element.visual_effect :highlight
+end

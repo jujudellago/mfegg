@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+ <%= render :partial => 'layouts/page_header' %>
+<body>
+	<%= yield :after_body %>	
+	<%= transparent_flash_message({:hideEffect=>'Effect.SlideUp', :showEffect=>'Effect.SlideDown',
+									:hideEffectOptions=>{:duration=>2.0},
+									:top=>"'130'"
+									}) %>
+	<div id="main">		
+
+		   <%= render :partial => 'layouts/user_top_nav' %>
+
+ <div id="logo"><h1><a href="/">mal<span>e</span>+f<span>e</span>mal<span>e</span>=<span>e</span>gg</a></h1><%= image_tag('VINI_logo-reptile_s3.gif') %></div>
+
+      <%= render :partial => 'layouts/top_menu' %>
+
+ <div id="site_content">
+   			<%= yield :layout %>
+    </div>
+<%= render :partial =>'layouts/footer_google' %>
+  </div>
+  <%= render :partial => 'layouts/footer' %>
+</body>
+</html>
+
+

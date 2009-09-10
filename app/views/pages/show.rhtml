@@ -1,0 +1,39 @@
+<% content_for :head do%>
+<% if admin? %>
+<%= javascript_include_tag 'tiny_mce/tiny_mce.js' %>	
+<%= use_tinymce  %>
+<%= javascript_include_tag 'inplacericheditor' %>	
+<% end %>
+<% end %>
+<% content_for :right_title do %>
+<%= "origins"[:origins] %>
+<% end %>
+<% content_for :right do%>
+<p><%= "Pogona Vitticeps juveniles are between six and eight centimetres when they clutch from their egg. They have 20 not protracting claws. Once they’re adult, bearded dragons are stocky lizards, which can reach a height of 50 centimetres."[:poggo_presentation] %> <%= link_to('read more'[:read_more], page_url('82-origines'))%>...
+</p>  <!-- <p>Je m’appelle Vincent, j’ai <%= age(BDAY)%> ans, j’habite en suisse, et je suis passionné par les animaux. <%= link_to('la suite...', page_url('3-propos'))%></p>  -->
+
+<% end %>
+
+<h2><%= @page.title %></h2>
+<% if admin? %>
+<div id="simpletobeedited" class="tobeedited">
+<% end %>
+<%= @page.body %>
+<% if admin? %>
+</div>
+<br /><br />
+<h4><%= "Search engines"[:search_engines] %></h4>
+<p><strong><%= "Keywords" %></strong>:
+<%= in_place_editor_field :page, :keywords,  :url => pages_url(@page,:locale=>session[:locale]) %><i><%= "Separated by comas"[:separated_by_comas] %></i>
+</p>
+<p><strong><%= "Description" %></strong>:
+<%= in_place_editor_field :page, :description,:url => pages_url(@page,:locale=>session[:locale]) %>
+</p>
+<script>
+var myCols=73;
+var myRows=20;
+
+new Ajax.InPlaceRichEditor($('simpletobeedited'), '/<%= session[:locale] %>/pages/<%=@page.id%>;update_ajax',
+{ okControl: 'button', cancelControl: 'button' , rows: '60'});
+</script>
+<% end %>

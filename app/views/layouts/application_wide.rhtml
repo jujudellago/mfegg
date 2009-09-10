@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+ <%= render :partial => 'layouts/page_header' %>
+<body>
+	<%= yield :after_body %>	
+	<%= transparent_flash_message({:hideEffect=>'Effect.SlideUp', :showEffect=>'Effect.SlideDown',
+									:hideEffectOptions=>{:duration=>2.0},
+									:top=>"'130'"
+									}) %>
+	<div id="main">		
+		   <%= render :partial => 'layouts/user_top_nav' %>
+ <div id="logo"><h1><a href="/">mal<span>e</span>+f<span>e</span>mal<span>e</span>=<span>e</span>gg</a></h1><%= image_tag('VINI_logo-reptile_s3.gif') %></div>
+      <%= render :partial => 'layouts/top_menu' %>
+  <div id="site_content">
+    <div id="first_column_wide" >
+	<% 
+	extracssclass=""
+	if (browser_is? :ie)
+		extracssclass="_ie"
+	end
+	 %>
+	
+		<div class="disignBoxFirst_wide<%= extracssclass %>">
+			<div class="boxFirstHeader"><%= yield :right_title %></div>
+			<div class="boxContent">
+					<%= yield :right %>	
+					<%= render :partial => 'layouts/admin_site_menu' %>
+			</div>
+		</div>
+	<%- if false -%>
+		<div class="disignBoxFirst_wide">
+			<div class="boxFirstHeader">Photos <span class="blue">flic</span><span class="pink">r</span>  </div>
+			<div class="boxContent">
+				<div  class="thumb_block">
+						<% 
+						i=0
+						for photo in @flickr_photos %>
+						<% if i<6 %>
+						 <div  class="thumb_image"> <%= flickr_photo_tag(photo) %></div>
+						<% 
+							i=i+1
+						end
+						 %>
+						<% end %>
+				</div>
+				<!-- <%= image_tag('flickr_logo_dark.gif', :align=>'center')%> -->
+			</div>
+		</div>
+		<%- end -%>
+			<div class="disignBoxFirst_wide">
+				<div class="boxFirstHeader">Sponsors </div>
+				<div class="boxContent">
+		<script type="text/javascript"><!--
+		google_ad_client = "pub-0602541631809470";
+		/* 120x240, date de création 06/02/08 */
+		google_ad_slot = "1653634212";
+		google_ad_width = 120;
+		google_ad_height = 240;
+		//-->
+		</script>
+		<script type="text/javascript"
+		src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+		</script>
+    </div>
+</div>
+</div>
+	
+    <div id="content_wide">
+		
+			
+		<div class="disignBoxSecond_wide">
+			<div class="boxContent">
+			<%= yield :layout %>
+ 	  		</div>
+		</div>
+    </div>
+<%= render :partial =>'layouts/footer_google' %>
+  </div>
+  <%= render :partial => 'layouts/footer' %>
+</body>
+</html>
+
+

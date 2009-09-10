@@ -1,0 +1,184 @@
+<head>
+ <title><%= "#{h @page_title} - " if @page_title %> ..:: male+female=egg ::..</title>
+<% if @page -%>
+<meta name="description" content="<%= @page.description %>" />
+<meta name="keywords" content="<%= @page.keywords %>" />
+<% end -%>
+<%= javascript_include_merged :base %>
+<%= stylesheet_link_merged :base %>
+<%# if (browser_is? :ie) %>
+<!--[if IE]>
+ <style>
+/* If  you are curious, and watching this source code, see all the craps I must add in my beautifull CSS code to make it look ok with this damn Internet explorer....
+	Make yourself a favor an swith to Firefox, there's no reason on earth no to !!!!! 
+		- everything will run faster on internet
+		- you'll be safe with active X that can ruin your PC
+		- you'll contribute in helping microsoft following the Web standards
+		
+Note that I made some errors in design , it should run well on IE7, my blame it's mostly for IE6 users that I say that....
+
+so just keep IE for windows updates, or control systems with HP, Dell, or other big manufacturer, it's the only use !
+
+cheers
+*/
+
+
+	#top_usernav{
+	/*	background:url('/images/b.gif') repeat;*/
+		height:25px;
+		width:230px;
+		float:right;
+		padding-right:5px;
+		position:absolute;	
+	}
+	
+
+	#logo img{
+		vertical-align:right;
+		margin-left:0;
+		float:right;
+		border:1px;
+	}
+
+	#logo h1
+	{ 
+		font-family: Arial;
+		font-size: 60px;
+		text-transform: lowercase;
+		font-weight: normal;
+		position:absolute;
+		top:50;
+		border: 0;
+		float: left;
+		letter-spacing: 0px;
+	}
+
+	.disignBoxFirst_wide
+	{
+	background:transparent url(/images/db_first_bg_wide.jpg) no-repeat scroll left top;
+		clear:left;
+		margin-bottom:10px;
+		padding-top:16px;
+		padding-right:10px;
+		position:relative;
+		width:190px;
+
+	}
+	
+	.disignBoxFirst_wide .boxFirstHeader
+	{
+		color:#ffc600;
+		font-size:18px;
+		font-weight:bold;
+		height:20px;
+		padding:3px 0px 10px 20px;
+		position:relative;
+		text-align:left;
+		width:230px;
+
+
+	}
+	.disignBoxFirst_wide .boxContent
+	{
+		font-size:13px;
+		overflow:hidden;
+		padding:10px 0pt 10px 24px;
+		position:relative;
+		height:320px;
+	}
+.disignBoxFirst_wide_ie
+	{
+	background:transparent url(/images/db_first_bg_wide.jpg) no-repeat scroll left top;
+		clear:left;
+		margin-bottom:10px;
+		padding-top:16px;
+		padding-right:10px;
+		position:relative;
+		width:190px;
+		height:65px;
+			padding-left:25px;
+	}
+.disignBoxFirst_wide_ie ul{
+	list-style:none;
+
+}
+	
+
+
+
+</style>	
+<![endif]-->
+
+
+
+<!--[if lte IE 6]>
+<style>
+#unsupported {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 155px;
+    height: 47px;
+    background: transparent url(http://www.mentallyretired.com/unsupported.gif) center center no-repeat;
+}
+#unsupported a {
+    display: block;
+    width: 155px;
+    height: 47px;
+    text-decoration: none;
+    text-indent: -9999px;
+    font-size: 0.1em;
+}
+
+#logo
+{ margin-left: 0; 
+	margin-right: 0;
+}
+
+#logo h1 a{
+	font-size:56px;
+	font:30px;
+	color:#ffc600;
+
+	z-index:500000;
+
+}
+#first_column_wide {
+padding:0;
+margin:0;
+width:200px;
+}
+
+#content_wide
+{ text-align: left;
+	width: 622px;
+	float: left;
+	position:absolute;
+	padding: 12px 0px 10px 0px;
+}
+
+#photos_list ul { list-style: none; border:1px; }
+#photos_list li { height:180px;   margin-right: 30px; }
+#photos_list li a img {
+ float:center;
+ background: #000;	
+}
+
+
+</style>
+<p id="unsupported">
+    <a href="http://www.mentallyretired.com/unsupported.html">CAUTION: Your browser is no longer supported by this website. See it as intended. Click here.</a>
+</p>
+<![endif]-->
+<%# end %>
+<meta name="verify-v1" content="gOmKD/9QsVy0cH/djqemUByd+As/KcyvNGxgl6p9Aq4=" />
+<% unless @feed_icons.blank? -%>
+  <% @feed_icons.each do |feed| -%>
+  <%= auto_discovery_link_tag :rss, feed[:url], :title => "Subscribe to '#{feed[:title]}'" %>
+  <% end -%>
+<% end -%>
+<%- if false -%>
+  <link rel="search" type="application/opensearchdescription+xml" href="http://<%= request.host_with_port %>/open_search.xml" />
+<%- end -%>
+	<%= yield :head %>
+</head>

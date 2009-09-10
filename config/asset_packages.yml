@@ -1,0 +1,22 @@
+--- 
+javascripts: 
+- base: 
+  - prototype
+  - effects
+  - dragdrop
+  - controls
+  - lightbox
+  - widgets/tooltip
+  - application
+  - lowpro
+  - application
+  - transparent_message
+  - dropdowntabs
+  - reflection
+stylesheets: 
+- base: 
+  - display
+  - lightbox
+  - ddcolortabs
+  - mfegg
+  - flash

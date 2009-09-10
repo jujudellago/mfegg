@@ -1,0 +1,40 @@
+
+<h2><%='All pages'[:all_pages] %></h2>
+<div id ="editor_infos">
+	<p><%=image_tag('/images/icons/kate.png', :alt=>'edit'[:edit])%> <%="Edit in WYSYWYG"[:edit_in_wysiwyg]%></p>
+	<p><%=image_tag('/images/icons/konsole.png', :alt=>'Edit HTML code'[:edit_html_code])%> <%="Edit HTML code"[:edit_html_code]%></p>
+	<p><%=image_tag('/images/icons/cancel.png', :alt=>"Destroy"[:destroy])%> <%="Destroy"[:destroy]%></p>
+	<p><%=image_tag('/images/icons/window_list.png', :alt=>'Add child page'[:add_sub_page])%> <%= 'Add child page'[:add_sub_page] %></p>
+	<p><%=image_tag('/images/icons/2downarrow.png', :alt=>"Order pages "[:order_pages])%> <%="Order pages "[:order_pages]%></p>
+</div>
+<p><%= "All the pages hyerarchy is displayed here, you cannot delete the welcome page, or add sub pages to it"[:all_the_page_hierarchy_is_here] %><br />
+<strong><%= "You cannot define content for a page who has sub-pages"[:you_cannot_define_content_for_page_with_sub_pages] %></strong></p>
+<ol id="pages_list">
+  <% @pages.each do |page| %>
+<%= render :partial => 'page', :locals=>{:page=>page} %>
+  <% end %>
+</ol>
+
+
+<p><%= link_to_function 'Add parent page'[:add_parent_page] do |page| 
+	page[:form_container].toggle
+	page[:parent_hidden].value="0"
+	page.replace_html :info_page_form, 'Add parent page'[:add_parent_page]
+end %>
+</p>
+
+<div id="form_container" style="display:none">
+<h2><span id="info_page_form"><%= 'Add parent page'[:add_parent_page] %></span></h2>
+<% form_remote_for (:page, :url => pages_path, :html => { :id => 'pages_form' }) do |f| %>
+<p><label for="page title"><%= 'Page title'[:page_title] %></label>:
+<%= f.hidden_field :parent_id, :value=>'0' , :id=>'parent_hidden' %>
+<%= f.text_field :title %><%= submit_tag 'Submit'[:submit], :id=>'submit_page_form' %></p>
+<% end  #end form %>
+<%= link_to_function 'cancel'[:cancel] do |page| 
+	page[:form_container].toggle
+	page['pages_form'].reset
+end %>
+</div>
+
+
+

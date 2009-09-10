@@ -1,0 +1,9 @@
+User-Agent: *
+Disallow: /admin/
+Disallow: /stylesheets/
+Disallow: /javascripts/
+Disallow: /tests/
+Disallow: /*/users/*
+Allow: /
+Disallow: /photos/
+Sitemap: http://male-female-egg.com/sitemap.xml

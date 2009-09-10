@@ -1,0 +1,8 @@
+<% if admin? %>
+	<h3><%= "Content management"[:content_management]%></h3>
+		<ul>
+			<li><%= link_to("Pages management"[:pages_management], pages_path) %></li>
+			<li><%= link_to("Pages positions"[:pages_positions], { :controller => 'pages',:action=>'positions', :parent_id=>'0'}) %></li>
+			<li><%= link_to("manage editor images", my_images_url) %></li>
+		</ul>		
+<% end%>
